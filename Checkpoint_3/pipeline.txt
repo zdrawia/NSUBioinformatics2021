@@ -7,11 +7,11 @@ rule fastqc:
 rule index:
     input: "ref.fa", "sra_data.html"
     output: "ref.mmi"
-    shell: "../../minimap2/minimap2 -d ref.mmi ref.fa"
+    shell: "minimap2 -d ref.mmi ref.fa"
 rule align:
     input: rules.index.output
     output: "sra_data.sam"
-    shell: "../../minimap2/minimap2 -a {rules.index.output} sra_data.fastq.gz > {output}"
+    shell: "minimap2 -a {rules.index.output} sra_data.fastq.gz > {output}"
 rule flagstat:
     input: rules.align.output
     output: "sra_data_flagstat.txt"
