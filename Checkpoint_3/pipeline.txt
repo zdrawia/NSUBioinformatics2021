@@ -1,0 +1,22 @@
+rule all:
+    input: "result.txt"
+rule fastqc:
+    input: "sra_data.fastq.gz"
+    output: "sra_data.html"
+    shell: "fastqc {input} ; mv sra_data_fastqc.html sra_data.html ; rm sra_data_fastqc.zip"
+rule index:
+    input: "ref.fa", "sra_data.html"
+    output: "ref.mmi"
+    shell: "../../minimap2/minimap2 -d ref.mmi ref.fa"
+rule align:
+    input: rules.index.output
+    output: "sra_data.sam"
+    shell: "../../minimap2/minimap2 -a {rules.index.output} sra_data.fastq.gz > {output}"
+rule flagstat:
+    input: rules.align.output
+    output: "sra_data_flagstat.txt"
+    shell: "samtools flagstat {input} > {output}"
+rule python:
+    input: rules.flagstat.output
+    output: "result.txt"
+    shell: "python script.py {input} | ./check.sh > {output}"

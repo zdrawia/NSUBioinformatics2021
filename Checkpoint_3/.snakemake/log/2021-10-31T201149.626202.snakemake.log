@@ -1,0 +1,4 @@
+Building DAG of jobs...
+WildcardError in line 3 of /Users/vladimirleshkevich/GitProjects/NSUBioinformatics2021/Checkpoint_3/pipeline01.txt:
+Wildcards in input files cannot be determined from output files:
+'condition'

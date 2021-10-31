@@ -1,0 +1,4 @@
+Building DAG of jobs...
+WildcardError in line 70 of /Users/vladimirleshkevich/GitProjects/NSUBioinformatics2021/Checkpoint_3/pipeline.txt:
+Wildcards in input files cannot be determined from output files:
+'name'

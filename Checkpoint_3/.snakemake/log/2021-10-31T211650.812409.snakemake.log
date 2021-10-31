@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 2 of /Users/vladimirleshkevich/GitProjects/NSUBioinformatics2021/Checkpoint_3/pipeline.txt:
+Missing input files for rule all:
+sra_data_result.txt
